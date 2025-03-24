@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Lion Jump</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: skyblue;
+            overflow: hidden;
+        }
+        .lion {
+            width: 100px;
+            height: 100px;
+            background: url('https://i.imgur.com/qJ0W2hW.png') no-repeat center/contain;
+            position: absolute;
+            bottom: 50px;
+            transition: transform 0.4s ease-in-out;
+        }
+        .jump {
+            animation: jump 0.6s ease-in-out;
+        }
+        @keyframes jump {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-150px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="lion" id="lion"></div>
+    <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.code === "Space") {
+                let lion = document.getElementById("lion");
+                if (!lion.classList.contains("jump")) {
+                    lion.classList.add("jump");
+                    setTimeout(() => lion.classList.remove("jump"), 600);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
